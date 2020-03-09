@@ -1,7 +1,10 @@
 package com.BSTU.ChupersAvia.entity;
 
+import org.hibernate.criterion.Order;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 public class Plane {
@@ -16,6 +19,16 @@ public class Plane {
     private int planeСapacity;
 
     public Plane() {
+    }
+    @OneToMany
+    List<OrderItem> orderItemList;
+
+    public List<OrderItem> getOrderItemList() {
+        return orderItemList;
+    }
+
+    public void setOrderItemList(List<OrderItem> orderItemList) {
+        this.orderItemList = orderItemList;
     }
 
     public Long getPlaneId() {

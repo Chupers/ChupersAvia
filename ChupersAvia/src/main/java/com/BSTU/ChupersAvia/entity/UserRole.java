@@ -2,6 +2,8 @@ package com.BSTU.ChupersAvia.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.awt.*;
+import java.util.List;
 
 @Entity
 public class UserRole {
@@ -10,8 +12,8 @@ public class UserRole {
    Long userRoleId;
     @NotNull
    String roleName;
-   @OneToOne
-    users users;
+    @OneToMany
+    List<users> users;
 
     public UserRole() {
     }
@@ -32,11 +34,11 @@ public class UserRole {
         this.roleName = roleName;
     }
 
-    public com.BSTU.ChupersAvia.entity.users getUsers() {
+    public List<com.BSTU.ChupersAvia.entity.users> getUsers() {
         return users;
     }
 
-    public void setUsers(com.BSTU.ChupersAvia.entity.users users) {
+    public void setUsers(List<com.BSTU.ChupersAvia.entity.users> users) {
         this.users = users;
     }
 }

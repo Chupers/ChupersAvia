@@ -10,8 +10,18 @@ public class users {
     private Long userId;
     @NotNull
     private Long hashPassword;
-    @OneToOne
+    @ManyToOne
     private UserRole userRole;
+    @OneToOne
+    BillingAccount billingAccount;
+
+    public BillingAccount getBillingAccount() {
+        return billingAccount;
+    }
+
+    public void setBillingAccount(BillingAccount billingAccount) {
+        this.billingAccount = billingAccount;
+    }
 
     public users() {
     }
