@@ -7,9 +7,9 @@ import java.util.List;
 public class FlightHistory {
     @Id
     @GeneratedValue
-    Long flightHistoryId;
+    private Long flightHistoryId;
     @OneToOne
-    users users;
-    @OneToMany
-    List<SalesOrder> salesOrder;
+    private users users;
+    @OneToMany(mappedBy = "flightHistory",orphanRemoval = true)
+    private List<SalesOrder> salesOrder;
 }

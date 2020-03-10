@@ -13,6 +13,8 @@ public class OrderItem {
     private double pricePerSeat;
     @OneToOne
     private Airport airportTo;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private SalesOrder salesOrder;
 
     private Timestamp dateTo;
 
@@ -69,7 +71,7 @@ public class OrderItem {
 
     @OneToOne
     private Airport airportFrom;
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Plane plane;
 
 }

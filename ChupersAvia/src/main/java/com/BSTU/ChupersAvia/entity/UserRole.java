@@ -9,11 +9,11 @@ import java.util.List;
 public class UserRole {
     @Id
     @GeneratedValue
-   Long userRoleId;
+    private Long userRoleId;
     @NotNull
-   String roleName;
-    @OneToMany
-    List<users> users;
+    private String roleName;
+    @OneToMany(mappedBy = "userRole",orphanRemoval = true)
+    private List<users> users;
 
     public UserRole() {
     }

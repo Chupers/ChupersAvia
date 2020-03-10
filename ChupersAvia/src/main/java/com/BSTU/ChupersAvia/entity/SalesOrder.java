@@ -8,29 +8,39 @@ public class SalesOrder {
     @Id
     @GeneratedValue
     private Long salesOrderId;
-    @OneToMany
-    private List<Costumer> costumers;
-    @OneToMany
-    private List<OrderItem> orderItems;
-    @ManyToOne
-    private users users;
-    @ManyToOne
-    private BillingAccount billingAccount;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Costumer costumers;
 
+    public Costumer getCostumers() {
+        return costumers;
+    }
+
+    public void setCostumers(Costumer costumers) {
+        this.costumers = costumers;
+    }
+
+    public FlightHistory getFlightHistory() {
+        return flightHistory;
+    }
+
+    public void setFlightHistory(FlightHistory flightHistory) {
+        this.flightHistory = flightHistory;
+    }
+
+    @OneToMany(mappedBy = "salesOrder",orphanRemoval = true)
+    private List<OrderItem> orderItems;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private users users;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private BillingAccount billingAccount;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private FlightHistory flightHistory;
     public Long getSalesOrderId() {
         return salesOrderId;
     }
 
     public void setSalesOrderId(Long salesOrderId) {
         this.salesOrderId = salesOrderId;
-    }
-
-    public List<Costumer> getCostumers() {
-        return costumers;
-    }
-
-    public void setCostumers(List<Costumer> costumers) {
-        this.costumers = costumers;
     }
 
     public List<OrderItem> getOrderItems() {

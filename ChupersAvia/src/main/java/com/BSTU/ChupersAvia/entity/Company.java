@@ -8,7 +8,7 @@ public class Company {
     @Id
     @GeneratedValue
     private Long companyId;
-    @OneToMany(mappedBy = "company",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "company",orphanRemoval = true)
     private List<Airport> airports;
 
     private String companyName;

@@ -10,7 +10,7 @@ public class Airport {
 
     private String airportName;
 
-    @ManyToOne(optional = false,fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Company company;
     @OneToOne
     private Address address;

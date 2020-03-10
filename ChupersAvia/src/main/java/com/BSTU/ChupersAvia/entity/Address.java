@@ -11,11 +11,11 @@ import javax.validation.constraints.NotNull;
 public class Address {
     @Id
     @GeneratedValue
-    Long AddressId;
+    private Long AddressId;
     @NotNull
-    String Country;
+    private String Country;
     @NotNull
-    String City;
+    private String City;
 
     public Address() {
     }

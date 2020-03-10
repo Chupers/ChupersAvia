@@ -20,7 +20,7 @@ public class Plane {
 
     public Plane() {
     }
-    @OneToMany
+    @OneToMany(mappedBy = "plane",orphanRemoval = true)
     List<OrderItem> orderItemList;
 
     public List<OrderItem> getOrderItemList() {

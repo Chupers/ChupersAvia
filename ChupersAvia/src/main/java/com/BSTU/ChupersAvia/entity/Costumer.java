@@ -1,9 +1,8 @@
 package com.BSTU.ChupersAvia.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 public class Costumer {
@@ -16,6 +15,8 @@ public class Costumer {
     private String secondName;
     @NotNull
     private PassengerType passengerType;
+    @OneToMany(mappedBy = "costumers",orphanRemoval = true)
+    private List<SalesOrder> salesOrders;
 
     public Long getCostumerId() {
         return costumerId;

@@ -10,10 +10,10 @@ public class users {
     private Long userId;
     @NotNull
     private Long hashPassword;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private UserRole userRole;
     @OneToOne
-    BillingAccount billingAccount;
+    private BillingAccount billingAccount;
 
     public BillingAccount getBillingAccount() {
         return billingAccount;

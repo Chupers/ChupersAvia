@@ -13,6 +13,17 @@ public class BillingAccount {
 
     public BillingAccount(){}
 
+    @OneToOne
+    private users users;
+
+    public com.BSTU.ChupersAvia.entity.users getUsers() {
+        return users;
+    }
+
+    public void setUsers(com.BSTU.ChupersAvia.entity.users users) {
+        this.users = users;
+    }
+
     public double getCurrentBill() {
         return currentBill;
     }
