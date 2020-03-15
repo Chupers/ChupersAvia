@@ -9,7 +9,9 @@ public class users {
     @GeneratedValue
     private Long userId;
     @NotNull
-    private Long hashPassword;
+    @NotNull
+    private String userName;
+    private String hashPassword;
     @ManyToOne(fetch = FetchType.LAZY)
     private UserRole userRole;
     @OneToOne
@@ -26,6 +28,14 @@ public class users {
     public users() {
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public Long getUserId() {
         return userId;
     }
@@ -34,11 +44,11 @@ public class users {
         this.userId = userId;
     }
 
-    public Long getHashPassword() {
+    public String getHashPassword() {
         return hashPassword;
     }
 
-    public void setHashPassword(Long hashPassword) {
+    public void setHashPassword(String hashPassword) {
         this.hashPassword = hashPassword;
     }
 
