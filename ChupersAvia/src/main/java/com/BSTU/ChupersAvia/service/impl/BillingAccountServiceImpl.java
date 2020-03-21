@@ -27,4 +27,9 @@ public class BillingAccountServiceImpl implements BillingAccountService {
     public List<BillingAccount> getAllBillingAccount() {
        return billingAccountRepository.findAllBy();
     }
+
+    @Override
+    public BillingAccount getBillingAccountById(Long id) {
+       return billingAccountRepository.findBillingAccountByBillingAccountId(id);
+    }
 }

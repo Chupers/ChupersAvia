@@ -5,6 +5,7 @@ import com.BSTU.ChupersAvia.entity.OrderItem;
 import java.util.List;
 
 public interface OrderItemService {
-    void save(OrderItem orderItem);
+    OrderItem save(OrderItem orderItem);
     List<OrderItem> getOrderItemList();
+    OrderItem getOrderItemById(Long id);
 }

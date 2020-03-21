@@ -18,12 +18,17 @@ public class OrderItemServiceImpl implements OrderItemService {
     }
 
     @Override
-    public void save(OrderItem orderItem) {
-
+    public OrderItem save(OrderItem orderItem) {
+        return orderItemRepository.save(orderItem);
     }
 
     @Override
     public List<OrderItem> getOrderItemList() {
-        return null;
+        return orderItemRepository.findAllBy();
+    }
+
+    @Override
+    public OrderItem getOrderItemById(Long id) {
+        return orderItemRepository.findByOrderItemId(id);
     }
 }
