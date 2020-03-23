@@ -48,13 +48,19 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { MainPageComponent } from './main-page/main-page.component';
 import { RouterModule } from '@angular/router';
+import { PersonalAccountComponent } from './personal-account/personal-account.component';
+import { SearchPageComponent } from './search-page/search-page.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    MainPageComponent
+    MainPageComponent,
+    PersonalAccountComponent,
+    SearchPageComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
