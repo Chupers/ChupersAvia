@@ -51,6 +51,11 @@ import { RouterModule } from '@angular/router';
 import { PersonalAccountComponent } from './personal-account/personal-account.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { LoginComponent } from './login/login.component';
+import{ FormsModule,ReactiveFormsModule} from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -60,9 +65,14 @@ import { SearchResultComponent } from './search-result/search-result.component';
     MainPageComponent,
     PersonalAccountComponent,
     SearchPageComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    RegistrationComponent,
+    LoginComponent
   ],
   imports: [
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -110,7 +120,9 @@ import { SearchResultComponent } from './search-result/search-result.component';
     PortalModule,
     ScrollingModule,
     RouterModule.forRoot([
-      { path:'index', component: MainPageComponent}
+      { path:'index', component: MainPageComponent},
+      {path:'account', component:PersonalAccountComponent},
+      {path:'search', component:SearchPageComponent}
     ])
   ],
   providers: [],

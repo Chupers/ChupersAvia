@@ -1,5 +1,7 @@
 package com.BSTU.ChupersAvia.entity;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.awt.*;
@@ -17,7 +19,9 @@ public class UserRole {
 
     public UserRole() {
     }
-
+    public void AddUser(users user){
+        this.users.add(user);
+    }
     public Long getUserRoleId() {
         return userRoleId;
     }

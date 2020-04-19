@@ -42,7 +42,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), this.userRepository))
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
-                .antMatchers(HttpMethod.POST, "/users").permitAll()
+                .antMatchers("/user/*").permitAll()
+                .antMatchers("/user").permitAll()
+                .antMatchers("/billingAccount/*").permitAll()
                 .anyRequest().authenticated();
     }
     @Bean

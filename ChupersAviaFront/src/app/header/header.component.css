@@ -22,6 +22,7 @@ a{
     display:flex;
     justify-content: space-between;
     border-radius: 0;
+    background-color: #E91E63;
 }
 .header-logo{
     margin-top: 1rem;
@@ -45,13 +46,12 @@ a{
     margin-right: 3rem;
     padding: 1rem;
     
-    background-image: linear-gradient(to right, #B01336, #C72C41);
+    background-image: linear-gradient(to right, #303030, #393939);
     border-radius: 5px;
     color:#fff;
 }
 .header-menu-item-sign:hover{
     cursor: pointer;
-    color: #00BCD4;
 }
 @keyframes visableimg{
     0%{

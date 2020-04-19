@@ -1,32 +1,45 @@
 package com.BSTU.ChupersAvia.controller;
 
+import com.BSTU.ChupersAvia.entity.UserRole;
 import com.BSTU.ChupersAvia.entity.users;
+import com.BSTU.ChupersAvia.repository.RoleRepository;
+import com.BSTU.ChupersAvia.repository.UserRepository;
 import com.BSTU.ChupersAvia.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
+    private final RoleRepository roleRepository;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, RoleRepository roleRepository) {
         this.userService = userService;
+        this.roleRepository = roleRepository;
+    }
+    @PostMapping("/rol")
+    UserRole createNewRole(@RequestBody UserRole userRole){
+        return roleRepository.save(userRole);
     }
 
     @GetMapping("/getAll")
     List<users> getUserList(){
         return userService.getAllUsers();
     }
-    @PostMapping("/save")
+
+    @PostMapping("/registration")
     users saveUser(@RequestBody users users){
+        UserRole userRole = roleRepository.findByRoleName("USER");
+        userRole.AddUser(users);
+        users.setUserRole(userRole);
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        users.setHashPassword(bCryptPasswordEncoder.encode(users.getHashPassword()));
         return userService.save(users);
     }
 }
