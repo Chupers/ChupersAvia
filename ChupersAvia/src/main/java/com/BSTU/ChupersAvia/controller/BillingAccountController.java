@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200",maxAge = 10000)
 @RestController
 @RequestMapping("/billingAccount")
 public class BillingAccountController {

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200",maxAge = 10000)
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -34,12 +35,12 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    users saveUser(@RequestBody users users){
+    void saveUser(@RequestBody users users){
         UserRole userRole = roleRepository.findByRoleName("USER");
         userRole.AddUser(users);
         users.setUserRole(userRole);
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         users.setHashPassword(bCryptPasswordEncoder.encode(users.getHashPassword()));
-        return userService.save(users);
+        userService.save(users);
     }
 }

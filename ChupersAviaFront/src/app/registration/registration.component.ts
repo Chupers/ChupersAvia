@@ -3,7 +3,9 @@ import { FormGroupDirective, FormControl, NgForm, Validators } from '@angular/fo
 import { ErrorStateMatcher } from '@angular/material/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { GlobalRootURL } from '../GlobalRootURL';
-import { debuglog } from 'util';
+import { debuglog, log } from 'util';
+import { RegistrService } from '../shared/registr-service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-registration',
@@ -13,35 +15,32 @@ import { debuglog } from 'util';
 
 export class RegistrationComponent implements OnInit {
 
-  constructor(public http:HttpClient) { }
-  readonly URL = GlobalRootURL.BASE_API_URL + 'user/registration'
+  constructor(private registrService: RegistrService,
+              private _snackBar:MatSnackBar) { }
+  
   hide = true;
 
   ngOnInit(): void {
   }
-  password ="";
-  mail  = "";
+  hashpassword;
+  mail;
+  confirm;
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
   regitr(){
-    let headers = new HttpHeaders(
-      {'Content-Type': 'application/json'}
-    )
-    let body = {
-      userName : this.mail,
-      hashPassword : this.password
-    };
-    let options = {
-      headers : headers ,
-      observe : <'body'>'response'
-    }
-    this.http.post<any>(this.URL,body,options).subscribe((loginResp: Response) =>{
-      if(loginResp.ok){
-        debuglog("OK");
+    if(this.confirm == this.hashpassword){
+    this.registrService
+      .registerUser(this.mail,this.hashpassword)
+      .subscribe(
+        (resp:Response) =>{
+
+        }
+      )}
+      else{
+        this._snackBar.open("passwords not match","OK", {duration : 200})
       }
-    })
   }
   matcher = new MyErrorStateMatcher();
   

@@ -2,7 +2,7 @@
    
     <mat-form-field apperance = "outline" class="example-full-width">
         <mat-label>Email</mat-label>
-        <input [ngModel] ="mail" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+        <input [(ngModel)] = "mail" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
                placeholder="Ex. pat@example.com">
         <mat-hint>Errors appear instantly!</mat-hint>
         <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
@@ -12,25 +12,25 @@
           Email is <strong>required</strong>
         </mat-error>
     </mat-form-field>
-
-    <mat-form-field apperance = "outline" class="example-full-width">
-        <mat-label>Enter your password</mat-label>
-        <input [ngModel] = "password" matInput [type] = "hide ? 'password' : 'text'" >
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}} </mat-icon>
-        </button>
-    </mat-form-field>
-    
-    <mat-form-field apperance = "outline" class="example-full-width">
-        <mat-label>Confirm password</mat-label>
-        <input matInput [type] = "hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}} </mat-icon>
-        </button>
-    </mat-form-field>
-
-    <div class="confirmButton">
-        <button mat-flat-button color = "primary" (click)="regitr()" > Confirm </button>
-    </div>
-
   </form>
+  <mat-form-field apperance = "outline" class="example-full-width">
+    <mat-label>Enter your password</mat-label>
+    <input [(ngModel)] = "hashpassword" matInput [type] = "hide ? 'password' : 'text'" >
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}} </mat-icon>
+    </button>
+</mat-form-field>
+
+<mat-form-field apperance = "outline" class="example-full-width">
+    <mat-label>Confirm password</mat-label>
+    <input [(ngModel)] = "confirm" matInput [type] = "hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}} </mat-icon>
+    </button>
+</mat-form-field>
+
+<div class="confirmButton">
+    <button mat-flat-button color = "primary" (click)="regitr()" > Confirm </button>
+</div>
+<p>{{hashpassword}}</p>
+<p>{{confirm}}</p>
