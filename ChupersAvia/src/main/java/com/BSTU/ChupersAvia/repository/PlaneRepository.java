@@ -8,6 +8,8 @@ import java.util.List;
 
 @Repository
 public interface PlaneRepository extends CrudRepository<Plane,Long> {
+    //Procedure
     Plane findByPlaneId(Long id);
+    //Prodecure
     List<Plane> findAllBy();
 }

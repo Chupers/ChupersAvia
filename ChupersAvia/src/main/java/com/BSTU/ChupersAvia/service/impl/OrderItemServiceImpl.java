@@ -1,6 +1,7 @@
 package com.BSTU.ChupersAvia.service.impl;
 
 import com.BSTU.ChupersAvia.entity.OrderItem;
+import com.BSTU.ChupersAvia.entity.filters.SearchFilter;
 import com.BSTU.ChupersAvia.repository.OrderItemRepository;
 import com.BSTU.ChupersAvia.service.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import java.util.List;
 public class OrderItemServiceImpl implements OrderItemService {
 
     private final OrderItemRepository orderItemRepository;
+
 
     @Autowired
     public OrderItemServiceImpl(OrderItemRepository orderItemRepository) {
@@ -30,5 +32,13 @@ public class OrderItemServiceImpl implements OrderItemService {
     @Override
     public OrderItem getOrderItemById(Long id) {
         return orderItemRepository.findByOrderItemId(id);
+    }
+
+    @Override
+    public List<OrderItem> findOrderItemByFilter(SearchFilter searchFilter) {
+        return orderItemRepository
+                .findAllByAirportFrom_Address_CityAndAirportTo_Address_CityAndDateTo
+                        (searchFilter.getCityFrom(),searchFilter.getCityTo(),searchFilter.getDateTo());
+
     }
 }

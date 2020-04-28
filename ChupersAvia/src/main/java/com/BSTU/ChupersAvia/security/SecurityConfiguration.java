@@ -45,6 +45,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/*").permitAll()
                 .antMatchers("/user").permitAll()
                 .antMatchers("/billingAccount/*").permitAll()
+                .antMatchers("/orderItem/*").permitAll()
                 .anyRequest().authenticated();
     }
     @Bean

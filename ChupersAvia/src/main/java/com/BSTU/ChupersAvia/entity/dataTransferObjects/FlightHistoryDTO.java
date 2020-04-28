@@ -1,19 +1,18 @@
-package com.BSTU.ChupersAvia.entity;
+package com.BSTU.ChupersAvia.entity.dataTransferObjects;
 
-import javax.persistence.*;
+import com.BSTU.ChupersAvia.entity.SalesOrder;
+import com.BSTU.ChupersAvia.entity.users;
+
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.List;
 
-@Entity
-public class FlightHistory {
-    @Id
-    @GeneratedValue
+public class FlightHistoryDTO {
     private Long flightHistoryId;
-    @OneToOne
-    private users users;
-    @OneToMany(mappedBy = "flightHistory",orphanRemoval = true)
+    private UserDTO users;
     private List<SalesOrder> salesOrder;
 
-    public FlightHistory(){}
+    public FlightHistoryDTO(){}
 
     public Long getFlightHistoryId() {
         return flightHistoryId;
@@ -23,11 +22,11 @@ public class FlightHistory {
         this.flightHistoryId = flightHistoryId;
     }
 
-    public com.BSTU.ChupersAvia.entity.users getUsers() {
+    public UserDTO getUsers() {
         return users;
     }
 
-    public void setUsers(com.BSTU.ChupersAvia.entity.users users) {
+    public void setUsers(UserDTO users) {
         this.users = users;
     }
 

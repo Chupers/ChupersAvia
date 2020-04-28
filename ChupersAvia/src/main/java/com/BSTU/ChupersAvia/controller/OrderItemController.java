@@ -1,6 +1,8 @@
 package com.BSTU.ChupersAvia.controller;
 
 import com.BSTU.ChupersAvia.entity.OrderItem;
+import com.BSTU.ChupersAvia.entity.dataTransferObjects.OrderItemDTO;
+import com.BSTU.ChupersAvia.entity.filters.SearchFilter;
 import com.BSTU.ChupersAvia.service.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,5 +28,9 @@ public class OrderItemController {
     @PostMapping("/save")
     OrderItem saveOrderItem(@RequestBody OrderItem orderItem){
         return orderItemService.save(orderItem);
+    }
+    @PostMapping("/findOrderItem")
+    List<OrderItem> findOrderItemList(@RequestBody SearchFilter searchFilter){
+        return orderItemService.findOrderItemByFilter(searchFilter);
     }
 }

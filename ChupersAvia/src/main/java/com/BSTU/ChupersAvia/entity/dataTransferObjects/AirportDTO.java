@@ -1,25 +1,19 @@
-package com.BSTU.ChupersAvia.entity;
+package com.BSTU.ChupersAvia.entity.dataTransferObjects;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.BSTU.ChupersAvia.entity.Address;
+import com.BSTU.ChupersAvia.entity.Company;
 
-import javax.persistence.*;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
-@Entity
-public class Airport {
-    @Id
-    @GeneratedValue
+public class AirportDTO {
     private Long airportId;
-
     private String airportName;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
-    private Company company;
-    @OneToOne
+    private CompanyDTO company;
     private Address address;
 
-    public Airport() {
-    }
+    public AirportDTO(){}
 
     public Long getAirportId() {
         return airportId;
@@ -37,11 +31,11 @@ public class Airport {
         this.airportName = airportName;
     }
 
-    public Company getCompany() {
+    public CompanyDTO getCompany() {
         return company;
     }
 
-    public void setCompany(Company company) {
+    public void setCompany(CompanyDTO company) {
         this.company = company;
     }
 

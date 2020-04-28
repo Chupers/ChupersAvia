@@ -120,7 +120,7 @@ import { HttpClientModule } from '@angular/common/http';
     PortalModule,
     ScrollingModule,
     RouterModule.forRoot([
-      { path:'index', component: MainPageComponent},
+      { path:'', component: MainPageComponent},
       {path:'account', component:PersonalAccountComponent},
       {path:'search', component:SearchPageComponent}
     ])

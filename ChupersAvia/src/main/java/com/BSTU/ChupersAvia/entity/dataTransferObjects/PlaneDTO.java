@@ -1,36 +1,22 @@
-package com.BSTU.ChupersAvia.entity;
+package com.BSTU.ChupersAvia.entity.dataTransferObjects;
 
-import org.hibernate.criterion.Order;
+import com.BSTU.ChupersAvia.entity.Company;
+import com.BSTU.ChupersAvia.entity.OrderItem;
+import com.BSTU.ChupersAvia.entity.Plane;
 
-import javax.persistence.*;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@Entity
-public class Plane {
-    @Id
-    @GeneratedValue
+public class PlaneDTO {
     private Long planeId;
-    @NotNull
     private String planeModel;
-    @OneToOne
-    private Company company;
-    @NotNull
+    private CompanyDTO company;
     private int planeСapacity;
+    List<OrderItemDTO> orderItemList;
 
-    @OneToMany(mappedBy = "plane",orphanRemoval = true)
-    List<OrderItem> orderItemList;
-
-    public Plane() {
-    }
-
-    public List<OrderItem> getOrderItemList() {
-        return orderItemList;
-    }
-
-    public void setOrderItemList(List<OrderItem> orderItemList) {
-        this.orderItemList = orderItemList;
-    }
+    public PlaneDTO(){}
 
     public Long getPlaneId() {
         return planeId;
@@ -48,11 +34,11 @@ public class Plane {
         this.planeModel = planeModel;
     }
 
-    public Company getCompany() {
+    public CompanyDTO getCompany() {
         return company;
     }
 
-    public void setCompany(Company company) {
+    public void setCompany(CompanyDTO company) {
         this.company = company;
     }
 
@@ -62,5 +48,13 @@ public class Plane {
 
     public void setPlaneСapacity(int planeСapacity) {
         this.planeСapacity = planeСapacity;
+    }
+
+    public List<OrderItemDTO> getOrderItemList() {
+        return orderItemList;
+    }
+
+    public void setOrderItemList(List<OrderItemDTO> orderItemList) {
+        this.orderItemList = orderItemList;
     }
 }

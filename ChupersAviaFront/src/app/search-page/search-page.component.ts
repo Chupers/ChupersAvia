@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from '../shared/search-service';
+import { OrderItem } from 'src/entity/orderItem';
+import { Observer, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search-page',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchPageComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private searchService:SearchService) {
+    this.searchService.searchOrderItem().subscribe(
+      entitys =>{
+        this.OrderItems = entitys;
+      }
+    );
+   }
+  OrderItems: OrderItem[]
   ngOnInit(): void {
+   
   }
 
 }

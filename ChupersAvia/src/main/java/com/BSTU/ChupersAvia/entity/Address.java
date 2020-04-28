@@ -11,48 +11,46 @@ import javax.validation.constraints.NotNull;
 public class Address {
     @Id
     @GeneratedValue
-    private Long AddressId;
+    private Long addressId;
     @NotNull
-    private String Country;
+    private String country;
     @NotNull
-    private String City;
+    private String city;
+    @NotNull
+    String street;
 
     public Address() {
     }
 
     public Long getAddressId() {
-        return AddressId;
+        return addressId;
     }
 
     public void setAddressId(Long addressId) {
-        AddressId = addressId;
+        this.addressId = addressId;
     }
 
     public String getCountry() {
-        return Country;
+        return country;
     }
 
     public void setCountry(String country) {
-        Country = country;
+        this.country = country;
     }
 
     public String getCity() {
-        return City;
+        return city;
     }
 
     public void setCity(String city) {
-        City = city;
+        this.city = city;
     }
 
     public String getStreet() {
-        return Street;
+        return street;
     }
 
     public void setStreet(String street) {
-        Street = street;
+        this.street = street;
     }
-
-    @NotNull
-    String Street;
-
 }

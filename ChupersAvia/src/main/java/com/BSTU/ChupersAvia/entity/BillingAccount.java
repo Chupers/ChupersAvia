@@ -1,5 +1,7 @@
 package com.BSTU.ChupersAvia.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 
@@ -11,10 +13,10 @@ public class BillingAccount {
 
     private double currentBill;
 
-    public BillingAccount(){}
-
-    @OneToOne
+    @OneToOne(mappedBy = "billingAccount")
     private users users;
+
+    public BillingAccount(){}
 
     public com.BSTU.ChupersAvia.entity.users getUsers() {
         return users;

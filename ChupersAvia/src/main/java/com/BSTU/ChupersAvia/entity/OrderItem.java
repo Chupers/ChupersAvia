@@ -1,32 +1,57 @@
 package com.BSTU.ChupersAvia.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 public class OrderItem {
+
     @Id
     @GeneratedValue
     private Long orderItemId;
+
     @NotNull
     private double pricePerSeat;
+
     @OneToOne
     private Airport airportTo;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private SalesOrder salesOrder;
 
-    private Timestamp dateTo;
+    @OneToMany(mappedBy = "orderItems",fetch = FetchType.LAZY)
+    private List<SalesOrder> salesOrderList;
+
+    @OneToOne
+    private Airport airportFrom;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Plane plane;
+
+    private String timeOfDeparture;
+
+    private Date dateTo;
+
+    public void setSalesOrderList(List<SalesOrder> salesOrderList) {
+        this.salesOrderList = salesOrderList;
+    }
 
     public Long getOrderItemId() {
         return orderItemId;
     }
 
-    public Timestamp getDateTo() {
+    public List<SalesOrder> getSalesOrderList() {
+        return salesOrderList;
+    }
+
+    public Date getDateTo() {
         return dateTo;
     }
 
-    public void setDateTo(Timestamp dateTo) {
+    public void setDateTo(Date dateTo) {
         this.dateTo = dateTo;
     }
 
@@ -66,12 +91,16 @@ public class OrderItem {
         this.plane = plane;
     }
 
+    public String getTimeOfDeparture() {
+        return timeOfDeparture;
+    }
+
+    public void setTimeOfDeparture(String timeOfDeparture) {
+        this.timeOfDeparture = timeOfDeparture;
+    }
+
     public OrderItem() {
     }
 
-    @OneToOne
-    private Airport airportFrom;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Plane plane;
 
 }

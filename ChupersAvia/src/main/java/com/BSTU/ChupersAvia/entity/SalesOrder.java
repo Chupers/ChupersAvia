@@ -10,6 +10,14 @@ public class SalesOrder {
     private Long salesOrderId;
     @ManyToOne(fetch = FetchType.LAZY)
     private Costumer costumers;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private OrderItem orderItems;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private users users;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private BillingAccount billingAccount;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private FlightHistory flightHistory;
 
     public Costumer getCostumers() {
         return costumers;
@@ -27,28 +35,12 @@ public class SalesOrder {
         this.flightHistory = flightHistory;
     }
 
-    @OneToMany(mappedBy = "salesOrder",orphanRemoval = true)
-    private List<OrderItem> orderItems;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private users users;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private BillingAccount billingAccount;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private FlightHistory flightHistory;
     public Long getSalesOrderId() {
         return salesOrderId;
     }
 
     public void setSalesOrderId(Long salesOrderId) {
         this.salesOrderId = salesOrderId;
-    }
-
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
-    }
-
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
     }
 
     public com.BSTU.ChupersAvia.entity.users getUsers() {
@@ -68,4 +60,12 @@ public class SalesOrder {
     }
 
     public SalesOrder() {}
+
+    public OrderItem getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(OrderItem orderItems) {
+        this.orderItems = orderItems;
+    }
 }

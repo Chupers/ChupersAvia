@@ -1,23 +1,17 @@
-package com.BSTU.ChupersAvia.entity;
+package com.BSTU.ChupersAvia.entity.dataTransferObjects;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.BSTU.ChupersAvia.entity.Airport;
 
-import javax.persistence.*;
+import javax.persistence.OneToMany;
 import java.util.List;
 
-@Entity
-public class Company {
-    @Id
-    @GeneratedValue
+public class CompanyDTO {
+
     private Long companyId;
-
-    @OneToMany(mappedBy = "company",orphanRemoval = true)
-    private List<Airport> airports;
-
+    private List<AirportDTO> airports;
     private String companyName;
 
-    public Company() {
-    }
+    public CompanyDTO(){}
 
     public Long getCompanyId() {
         return companyId;
@@ -27,11 +21,11 @@ public class Company {
         this.companyId = companyId;
     }
 
-    public List<Airport> getAirports() {
+    public List<AirportDTO> getAirports() {
         return airports;
     }
 
-    public void setAirports(List<Airport> airports) {
+    public void setAirports(List<AirportDTO> airports) {
         this.airports = airports;
     }
 

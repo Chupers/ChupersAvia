@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroupDirective, FormControl, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
@@ -6,6 +6,7 @@ import { GlobalRootURL } from '../GlobalRootURL';
 import { debuglog, log } from 'util';
 import { RegistrService } from '../shared/registr-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-registration',
@@ -16,7 +17,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class RegistrationComponent implements OnInit {
 
   constructor(private registrService: RegistrService,
-              private _snackBar:MatSnackBar) { }
+              private _snackBar:MatSnackBar,
+              public dialogRef: MatDialogRef<RegistrationComponent>,
+              ) { }
   
   hide = true;
 
@@ -35,7 +38,7 @@ export class RegistrationComponent implements OnInit {
       .registerUser(this.mail,this.hashpassword)
       .subscribe(
         (resp:Response) =>{
-
+          this.dialogRef.close()
         }
       )}
       else{

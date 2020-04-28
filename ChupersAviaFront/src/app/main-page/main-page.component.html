@@ -5,30 +5,25 @@
     <p>
         <mat-form-field appearance="fill">
             <mat-label  class="labelText">From</mat-label>
-            <input class="labelText" matInput placeholder="Placeholder">
+            <input [(ngModel)]="cityFrom" class="labelText" matInput placeholder="Placeholder">
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="fill">
           <mat-label class="labelText">To</mat-label>
-          <input matInput class="labelText" placeholder="Placeholder">
+          <input [(ngModel)]="cityTo" matInput class="labelText" placeholder="Placeholder">
         </mat-form-field>
       </p>
       <mat-form-field appearance="fill">
         <mat-label>Depart</mat-label>
-        <input class="labelText" matInput [matDatepicker]="pickerDepart">
+        <input [(ngModel)]="dateTo" class="labelText" matInput [matDatepicker]="pickerDepart">
         <mat-datepicker-toggle matSuffix [for]="pickerDepart"></mat-datepicker-toggle>
         <mat-datepicker #pickerDepart></mat-datepicker>
       </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Return</mat-label>
-        <input matInput class="labelText" [matDatepicker]="pickerReturn">
-        <mat-datepicker-toggle matSuffix [for]="pickerReturn"></mat-datepicker-toggle>
-        <mat-datepicker #pickerReturn></mat-datepicker>
-      </mat-form-field>
+      
 </body>
 <body class="findButtonContainer">
 <mat-card class="findButton">
-<button mat-button >Search flights</button>
+<button mat-button (click)="find()" >Search flights</button>
 </mat-card>
 </body>

@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 public class users {
     @Id
     @GeneratedValue
-    private int userId;
+    private Long userId;
     @NotNull
     private String userName;
     @NotNull
@@ -15,8 +15,7 @@ public class users {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private UserRole userRole;
-
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private BillingAccount billingAccount;
 
     public BillingAccount getBillingAccount() {
@@ -38,11 +37,11 @@ public class users {
         this.userName = userName;
     }
 
-    public int getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
