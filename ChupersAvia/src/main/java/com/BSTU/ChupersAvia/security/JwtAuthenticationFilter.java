@@ -1,5 +1,6 @@
 package com.BSTU.ChupersAvia.security;
 
+import com.BSTU.ChupersAvia.algorithm.TwoFish;
 import com.BSTU.ChupersAvia.entity.LoginViewModel;
 import com.BSTU.ChupersAvia.repository.UserRepository;
 import com.auth0.jwt.JWT;
@@ -15,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.InvalidKeyException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -89,6 +91,16 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withSubject(principal.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME))
                 .sign(HMAC512(JwtProperties.SECRET.getBytes()));
-        response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + token);
+
+        try {
+            TwoFish twoFish = new TwoFish();
+            String encodeToken = twoFish.encode(token);
+            response.addHeader("encryp",encodeToken);
+            String decodeToken = twoFish.decode();
+            response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + decodeToken);
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+        }
+
     }
 }
