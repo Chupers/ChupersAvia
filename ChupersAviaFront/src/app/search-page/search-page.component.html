@@ -1,6 +1,90 @@
-<div *ngFor="let item of OrderItems">
-    <mat-card>
-    {{item.airportTo.address.country}}
-    {{item.airportFrom.address.country}}
-    </mat-card>
-</div>
+    <body class="searchBar">
+        <mat-card class>
+            <mat-form-field appearance="fill" class="formElement">
+                <mat-label  class="labelText">From</mat-label>
+                <input [(ngModel)]="cityFrom" class="labelText" matInput placeholder="Placeholder">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="formElement">
+              <mat-label class="labelText">To</mat-label>
+              <input [(ngModel)]="cityTo" matInput class="labelText" placeholder="Placeholder">
+            </mat-form-field>
+          <mat-form-field appearance="fill" class="formElement">
+            <mat-label>Depart</mat-label>
+            <input [(ngModel)]="dateTo" class="labelText" matInput [matDatepicker]="pickerDepart">
+            <mat-datepicker-toggle matSuffix [for]="pickerDepart"></mat-datepicker-toggle>
+            <mat-datepicker #pickerDepart></mat-datepicker>
+          </mat-form-field>
+          <button mat-raised-button color="warn" (click)="find()" class="formElement" >Search flights</button>
+          </mat-card>
+    </body>
+    <!---->
+    <div class="container" *ngFor = 'let orderItem of OrderItems'>
+        <div class="content"  >
+            <div class="fly-from-to">
+                <!-- <div class="fly-from-to-info-label-small">
+                    All price are per passenger and include taxes
+                </div> -->
+                <!-- <div class="img-plane">
+                    <img src="https://bumper-stickers.ru/30508-thickbox_default/samolet.jpg" alt="">
+                </div> -->
+                <div class="fly-from-to-info-label">
+                    {{orderItem.airportFrom.address.city}} → {{orderItem.airportTo.address.city}}
+                </div>
+            </div>
+            <mat-card class="fly-from-to-content">
+                <!-- <div class="calendar">
+                    <div class="month">MAY</div>
+                    <div class="short-dates">
+                        <div class="next-pref"></div>
+                        <div class="short-date">
+                            <div class="date">SAT 16,MAY</div>
+                            <div class="status">No flight</div>
+                        </div>
+                        <div class="short-date">
+                            <div class="date">SAT 16,MAY</div>
+                            <div class="status">No flight</div>
+                        </div>
+                        <div class="short-date">
+                            <div class="date">SAT 16,MAY</div>
+                            <div class="status">No flight</div>
+                        </div>
+                        <div class="short-date-select">
+                            <div class="date">SAT 16,MAY</div>
+                            <div class="status">No flight</div>
+                        </div>
+                        <div class="short-date">
+                            <div class="date">SAT 16,MAY</div>
+                            <div class="status">No flight</div>
+                        </div>
+                        <div class="short-date">
+                            <div class="date">SAT 16,MAY</div>
+                            <div class="status">No flight</div>
+                        </div>
+                        <div class="short-date">
+                            <div class="date">SAT 16,MAY</div>
+                            <div class="status">No flight</div>
+                        </div>
+                        <div class="next-pref">></div>
+                    </div>
+                </div> -->
+                <div class="info-about-fly">
+                    <div class="date-from">
+                        <div class="date-frome-lable">{{orderItem.dateTo}}</div>
+                        <div class="time">{{orderItem.timeOfDeparture}}</div>
+                        <div class="city">{{orderItem.airportFrom.address.city}}</div>
+                    </div>
+                    <div class="fly-time">
+                        <div class="fly-time-img">
+                            <img src="https://www.karobardaily.com/uploads/news/850X850/1564549144.png" alt="">
+                        </div>
+                        
+                    </div>
+                    <div class="date-to">
+                        <div class="time">{{orderItem.arrivalTime}}</div>
+                        <div class="city">{{orderItem.airportTo.address.city}}</div>
+                    </div>
+                    <button color ="warn" mat-raised-button class="sold-status">{{orderItem.pricePerSeat}}$</button>
+                </div>
+            </mat-card>
+        </div>
+        </div>

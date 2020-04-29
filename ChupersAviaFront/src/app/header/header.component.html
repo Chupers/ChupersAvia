@@ -3,7 +3,13 @@
         <div class="header-logo">ChupersAvia</div>
     </mat-card-title>
     <mat-card-subtitle class="header-menu">
-        <div class="header-menu-item"> <button mat-raised-button (click)="openLoginDialog()" >Log&nbsp;In </button> </div>
-        <div class="header-menu-item"><button mat-raised-button (click)="openRegistrationDialog()">Sign&nbsp;Up </button></div>
+        <mat-menu  #menu="matMenu">
+            <button  mat-menu-item (click)="openLoginDialog()" >Log&nbsp;In </button>
+            <button  mat-menu-item (click)="openRegistrationDialog()">Sign&nbsp;Up </button>
+        </mat-menu>
+        <div class="header-menu-item">
+            <button mat-fab color="accent" [matMenuTriggerFor]="menu" aria-label="Example icon button with a delete icon">
+            <mat-icon>menu</mat-icon>
+          </button></div>
     </mat-card-subtitle>
 </mat-card>

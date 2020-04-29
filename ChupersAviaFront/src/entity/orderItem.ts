@@ -6,4 +6,6 @@ export class OrderItem{
     airportTo:Airport
     airportFrom:Airport
     dateTo:Date
+    timeOfDeparture:String
+    arrivalTime:String
 }

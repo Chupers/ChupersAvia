@@ -1,0 +1,181 @@
+.searchBar{
+    display: flex;
+    justify-content: center;
+    height: auto;
+    margin-top: 2vh;
+    width: 100%;
+}
+.formElement{
+    margin: 1vh;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    height: auto;
+    margin-top: 2vh;
+    width: 100%;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 900px;
+}
+.fly-from-to{
+    display: flex;
+    flex-direction: column;
+}
+.fly-from-to-info-label-small{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.8rem;
+    color:#E91E63;
+    margin: 0.2rem;
+}
+.img-plane{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+    box-shadow: 0rem 0rem 2rem 0.35rem rgba(201,194,194,1);
+    overflow: hidden;
+    position: absolute;
+    top:2%;
+    left:3%;
+}
+.img-plane img{
+    width: 100%;
+}
+.fly-from-to-info-label{
+    background: #E91E63;
+    padding: 1rem 8rem;
+    color: #f2f2f2;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.fly-from-to-content{
+    display: flex;
+    flex-direction: column;
+}
+.next-pref{
+    color:#a1196e;
+    font-size:2rem;
+}
+.calendar{
+    display:flex;
+    flex-direction: column;
+    border-bottom: solid 2px #d6d6d6;
+}
+.month{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.8rem;
+    color:#a4a4a4;
+    margin-top:1rem;
+    margin-bottom:0.3rem;
+    margin-right: 5rem;
+}
+.short-dates{
+    display: flex;
+    justify-content: space-around;
+}
+.short-date{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 3px;
+    border:1px solid #a4a4a4;
+    width: 100px;
+    height:65px;
+}
+.short-date-select{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 3px;
+    border:2px solid #a1196e;
+    width: 100px;
+    height:65px;
+}
+.date{
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.status{
+    font-size: 0.8rem;
+    font-weight: bold;
+    color:#a4a4a4;
+    margin-top: 10px;
+}
+.info-about-fly{
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    height:150px;
+}
+.date-from{
+    margin-top: 3rem;
+    display:flex;
+    flex-direction: column;
+    margin-left: 3rem;
+    margin-bottom: 3rem;
+}
+.date-frome-lable{
+    font-size: 0.8rem;
+    color:#f2f2f2;
+    font-weight: bold;
+}
+.time{
+    font-size: 2rem;
+    color:#f2f2f2;
+    font-weight: bold;
+}
+.city{
+    font-size: 0.7rem;
+    color:#f2f2f2;
+    font-weight: bold;
+}
+.fly-time{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.fly-time-img{
+    width:320px;
+    margin-top: -40px;
+}
+.fly-time-img img{
+    width: 100%;
+}
+.time-fly{
+    position: relative;
+    color:#f2f2f2;
+    font-size: 0.8rem;
+    margin-top: -40px;
+}
+.date-to{
+    margin-top: 3rem;
+    display:flex;
+    flex-direction: column;
+    margin-left: 0.5rem;
+    margin-bottom: 3rem;
+}
+.date-to-lable{
+    font-size: 0.7rem;
+    color:#f2f2f2;
+    font-weight: bold;
+}
+.sold-status{
+    margin: 10px;
+    width: 100px;
+    height: 60px;
+}

@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -39,7 +40,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         // Create login token
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                 credentials.getUsername(),
-                credentials.getPassword());
+                credentials.getPassword(),
+                new ArrayList<>()
+        );
 
         response.setHeader("Access-Control-Expose-Headers", "Origin, X-Requested-With, " +
                 "Content-Type, Accept, Accept-Encoding, Accept-Language, Host," +

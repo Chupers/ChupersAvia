@@ -7,13 +7,17 @@ import {Injectable} from '@angular/core'
     providedIn:'root'
 })
 export class LoginService {
-    readonly URL = GlobalRootURL.BASE_API_URL + "/login"
+    readonly URL = GlobalRootURL.BASE_API_URL + "login"
+    readonly URLUser = GlobalRootURL.BASE_API_URL + "user"
     constructor(private http:HttpClient){
 
     }
-    // registerUser(userName : string, hashPassword: string): Observable<any>{
+    loadUser(){
+
+    }
+    login(username : string, password: string): Observable<any>{
        
-    //     let body = { hashPassword : hashPassword, userName : userName}
-    //     return this.http.post(this.URL,body)
-    // }
+        let body = { password : password, username : username}
+        return this.http.post(this.URL,body)
+    }
 }

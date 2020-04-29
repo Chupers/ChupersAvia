@@ -21,7 +21,8 @@ public class UserPrincipal implements UserDetails {
     public Collection <? extends GrantedAuthority> getAuthorities() {
         List <GrantedAuthority> authorities = new ArrayList <>();
 
-        GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + user.getUserRole());
+        GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + "USER" +
+                "");
         return authorities;
     }
 
@@ -42,7 +43,7 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
@@ -54,4 +55,6 @@ public class UserPrincipal implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 }

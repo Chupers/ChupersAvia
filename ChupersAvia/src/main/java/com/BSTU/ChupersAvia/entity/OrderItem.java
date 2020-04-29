@@ -31,6 +31,8 @@ public class OrderItem {
     @ManyToOne(fetch = FetchType.LAZY)
     private Plane plane;
 
+    private String arrivalTime;
+
     private String timeOfDeparture;
 
     private Date dateTo;
@@ -53,6 +55,14 @@ public class OrderItem {
 
     public void setDateTo(Date dateTo) {
         this.dateTo = dateTo;
+    }
+
+    public String getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(String arrivalTime) {
+        this.arrivalTime = arrivalTime;
     }
 
     public void setOrderItemId(Long orderItemId) {

@@ -8,18 +8,32 @@ import { Observer, Observable } from 'rxjs';
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.css']
 })
+
 export class SearchPageComponent implements OnInit {
 
-  constructor(private searchService:SearchService) {
+  cityFrom:String =""
+  cityTo:String = ""
+  dateTo:String = ""
+
+  find(){
+    
+    this.searchService.setFilter(this.cityFrom,this.cityTo,this.dateTo)
+    this.loadOrderItemOnPage();
+
+  }
+  loadOrderItemOnPage(){
     this.searchService.searchOrderItem().subscribe(
       entitys =>{
         this.OrderItems = entitys;
       }
     );
+  }
+  constructor(private searchService:SearchService,) {
+    
    }
   OrderItems: OrderItem[]
   ngOnInit(): void {
-   
+    this.loadOrderItemOnPage();
   }
 
 }
