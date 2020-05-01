@@ -1,1 +1,44 @@
-<p>search-result works!</p>
+<div class="content">
+    <div class="header">{{orderItem.airportFrom.address.city}} -> {{orderItem.airportTo.address.city}} </div>
+    <mat-card class="cardView">
+        <mat-list>
+            <mat-card-header>
+               {{orderItem.arrivalTime}} : {{orderItem.airportFrom.address.city}}:{{orderItem.airportFrom.address.street}}
+            </mat-card-header>
+            
+            <mat-card-header>
+                {{orderItem.timeOfDeparture}} : {{orderItem.airportTo.address.city}}:{{orderItem.airportTo.address.street}}
+             </mat-card-header>
+        </mat-list>
+    </mat-card>
+    <mat-card>
+        <mat-card-header>Costumer</mat-card-header>
+        <mat-form-field>
+            <mat-label  class="labelText">Frist name</mat-label>
+            <input [(ngModel)]="firstName" class="labelText" matInput placeholder="First Name">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label  class="labelText">Second name</mat-label>
+            <input [(ngModel)]="secondName" class="labelText" matInput placeholder="Second Name">
+        </mat-form-field>
+    </mat-card>
+    <mat-card>
+        <mat-card-header> Payment</mat-card-header>
+        <mat-form-field>
+            <mat-label  class="labelText">Card Number</mat-label>
+            <input [(ngModel)]="cardNumber" class="labelText" matInput placeholder="Card number">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label  class="labelText">CV code</mat-label>
+            <input  class="labelText" matInput placeholder="CV code">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label  class="labelText">Name</mat-label>
+            <input  class="labelText" matInput placeholder="Name">
+        </mat-form-field>
+        <mat-card-actions>
+            <mat-checkbox> Save Card </mat-checkbox>
+            <button mat-button (click)="makeSO()">Buy</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

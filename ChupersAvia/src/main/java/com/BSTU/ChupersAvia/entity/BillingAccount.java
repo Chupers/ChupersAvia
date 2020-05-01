@@ -11,8 +11,7 @@ public class BillingAccount {
     @GeneratedValue
     private Long billingAccountId;
 
-    private double currentBill;
-
+    private String creditCardNumber;
     @OneToOne(mappedBy = "billingAccount")
     private users users;
 
@@ -26,8 +25,12 @@ public class BillingAccount {
         this.users = users;
     }
 
-    public double getCurrentBill() {
-        return currentBill;
+    public String getCreditCardNumber() {
+        return creditCardNumber;
+    }
+
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
     }
 
     public Long getBillingAccountId() {
@@ -38,7 +41,4 @@ public class BillingAccount {
         this.billingAccountId = billingAccountId;
     }
 
-    public void setCurrentBill(double currentBill) {
-        this.currentBill = currentBill;
-    }
 }

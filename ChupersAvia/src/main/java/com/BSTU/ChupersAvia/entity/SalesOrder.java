@@ -15,8 +15,6 @@ public class SalesOrder {
     @ManyToOne(fetch = FetchType.LAZY)
     private users users;
     @ManyToOne(fetch = FetchType.LAZY)
-    private BillingAccount billingAccount;
-    @ManyToOne(fetch = FetchType.LAZY)
     private FlightHistory flightHistory;
 
     public Costumer getCostumers() {
@@ -49,14 +47,6 @@ public class SalesOrder {
 
     public void setUsers(com.BSTU.ChupersAvia.entity.users users) {
         this.users = users;
-    }
-
-    public BillingAccount getBillingAccount() {
-        return billingAccount;
-    }
-
-    public void setBillingAccount(BillingAccount billingAccount) {
-        this.billingAccount = billingAccount;
     }
 
     public SalesOrder() {}

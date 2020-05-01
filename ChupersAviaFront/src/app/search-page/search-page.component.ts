@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../shared/search-service';
 import { OrderItem } from 'src/entity/orderItem';
 import { Observer, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-page',
@@ -28,12 +29,16 @@ export class SearchPageComponent implements OnInit {
       }
     );
   }
-  constructor(private searchService:SearchService,) {
+ 
+  constructor(private searchService:SearchService,private router: Router) {
     
    }
   OrderItems: OrderItem[]
   ngOnInit(): void {
     this.loadOrderItemOnPage();
+  }
+   onSelect(selectOrderItem:OrderItem){
+    this.router.navigate(['/result',selectOrderItem.orderItemId])
   }
 
 }

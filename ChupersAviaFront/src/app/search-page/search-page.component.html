@@ -83,7 +83,7 @@
                         <div class="time">{{orderItem.arrivalTime}}</div>
                         <div class="city">{{orderItem.airportTo.address.city}}</div>
                     </div>
-                    <button color ="warn" mat-raised-button class="sold-status">{{orderItem.pricePerSeat}}$</button>
+                    <button (click)="onSelect(orderItem)" color ="warn" mat-raised-button class="sold-status">{{orderItem.pricePerSeat}}$</button>
                 </div>
             </mat-card>
         </div>

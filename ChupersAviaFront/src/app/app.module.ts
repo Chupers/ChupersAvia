@@ -122,7 +122,9 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule.forRoot([
       { path:'', component: MainPageComponent},
       {path:'account', component:PersonalAccountComponent},
-      {path:'search', component:SearchPageComponent}
+      {path:'search', component:SearchPageComponent},
+      {path:'result/:id',component:SearchResultComponent},
+
     ])
   ],
   providers: [],

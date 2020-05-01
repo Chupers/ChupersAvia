@@ -25,6 +25,10 @@ public class OrderItemController {
     List<OrderItem> getOrderItemList(){
         return orderItemService.getOrderItemList();
     }
+    @GetMapping("/findById")
+    OrderItem findById(@RequestParam("id") Long id){
+        return orderItemService.getOrderItemById(id);
+    }
     @PostMapping("/save")
     OrderItem saveOrderItem(@RequestBody OrderItem orderItem){
         return orderItemService.save(orderItem);
