@@ -95,9 +95,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         try {
             TwoFish twoFish = new TwoFish();
             String encodeToken = twoFish.encode(token);
-            response.addHeader("encryp",encodeToken);
+            //response.addHeader("encryp",encodeToken);
             String decodeToken = twoFish.decode();
-            response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + decodeToken);
+            response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + token);
         } catch (InvalidKeyException e) {
             e.printStackTrace();
         }

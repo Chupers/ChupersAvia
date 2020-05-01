@@ -9,7 +9,20 @@
             <button  mat-menu-item (click)="openRegistrationDialog()">Sign&nbsp;Up </button>
             </div>
             <div *ngIf ='user'>
-                {{user.userName}}
+                <mat-list>
+                    <mat-list-item>
+                        {{user.userName}}
+                    </mat-list-item>
+                    <mat-list-item>
+                        money:{{user.billingAccount.currentBill}}
+                    </mat-list-item>
+                    <mat-list-item>
+                        <button mat-flat-button (click)="goAccoutn()">account</button>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <button mat-flat-button (click)="logout()" >log out</button>
+                    </mat-list-item>
+                </mat-list>
             </div>
         </mat-menu>
         

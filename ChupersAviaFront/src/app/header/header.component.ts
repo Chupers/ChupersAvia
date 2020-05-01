@@ -4,6 +4,7 @@ import { LoginComponent } from '../login/login.component';
 import { RegistrationComponent } from '../registration/registration.component';
 import { User } from 'src/entity/user';
 import { LoginService } from '../shared/login-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,18 +14,27 @@ import { LoginService } from '../shared/login-service';
 export class HeaderComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
-    public loginService:LoginService) { }
+    public loginService:LoginService,
+    private router:Router) { }
 
   user:User
 
   loadUser(){
-    
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
   openRegistrationDialog(){
     const dialogRef = this.dialog.open(RegistrationComponent);
     dialogRef.afterClosed().subscribe(result =>{
-      this.user = JSON.parse(localStorage.getItem('user'));
+      this.loadUser()
     });
+  }
+  logout(){
+    localStorage.removeItem('user')
+    localStorage.removeItem('auth_token')
+    this.user = null;
+  }
+  goAccoutn(){
+    this.router.navigate(['/account'])
   }
 
   openLoginDialog(){

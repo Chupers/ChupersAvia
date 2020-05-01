@@ -10,7 +10,7 @@ public class TwoFish {
     ArrayList<byte[]> ciphers;
     Object sessionKey;
     public TwoFish() throws InvalidKeyException {
-         this.sessionKey = Twofish_Algorithm.makeKey(JwtProperties.SECRET.getBytes());
+         this.sessionKey = Twofish_Algorithm.makeKey(JwtProperties.SECRETTWOFISH.getBytes());
     }
     public String decode(){
         System.out.println("\n\nDecrypted Cipher Text : ");

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MyErrorStateMatcher } from '../registration/registration.component';
 import { FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../shared/login-service';
-import { debuglog } from 'util';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,8 @@ import { debuglog } from 'util';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService:LoginService) { }
+  constructor(private loginService:LoginService,
+    public dialogRef: MatDialogRef<LoginComponent>) { }
   
   hide = true;
 
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('auth_token', response.headers.get('Authorization'));
       this.loginService.loadUser(this.mail).subscribe(responseUser =>{
         localStorage.setItem('user',JSON.stringify(responseUser))
+        this.dialogRef.close();
       })
      
     })
