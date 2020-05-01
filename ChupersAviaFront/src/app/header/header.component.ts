@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { RegistrationComponent } from '../registration/registration.component';
 import { User } from 'src/entity/user';
+import { LoginService } from '../shared/login-service';
 
 @Component({
   selector: 'app-header',
@@ -11,17 +12,18 @@ import { User } from 'src/entity/user';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,
+    public loginService:LoginService) { }
 
   user:User
 
   loadUser(){
-
+    
   }
   openRegistrationDialog(){
     const dialogRef = this.dialog.open(RegistrationComponent);
     dialogRef.afterClosed().subscribe(result =>{
-      this.loadUser()
+      this.user = JSON.parse(localStorage.getItem('user'));
     });
   }
 
@@ -33,6 +35,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
 }

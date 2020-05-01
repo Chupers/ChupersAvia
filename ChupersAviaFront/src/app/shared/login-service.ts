@@ -1,7 +1,8 @@
 import { GlobalRootURL } from '../GlobalRootURL';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, from } from 'rxjs';
+import { Observable, from, Observer } from 'rxjs';
 import {Injectable} from '@angular/core'
+import { User } from 'src/entity/user';
 
 @Injectable({
     providedIn:'root'
@@ -12,12 +13,26 @@ export class LoginService {
     constructor(private http:HttpClient){
 
     }
-    loadUser(){
+    loadUser(username:string):Observable<any>{
+        let headers = new HttpHeaders(
+            { 'Content-Type': 'application/json',
+              'Authorization': localStorage.getItem('auth_token')});
+          let options = { headers: headers };
+      
+        return this.http.get<User>(this.URLUser+"/getByUserName?name="+username,options)
 
     }
     login(username : string, password: string): Observable<any>{
-       
+
         let body = { password : password, username : username}
-        return this.http.post(this.URL,body)
+      
+          let options = {
+            observe: <'body'>'response'
+          };
+       
+        return this.http.post<any>(this.URL,body,options)
+    }
+    logout(){
+        localStorage.removeItem('user');
     }
 }

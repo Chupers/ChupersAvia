@@ -36,8 +36,8 @@ public class UserController {
         return roleRepository.save(userRole);
     }
 
-    @GetMapping("/getByUserName/{name}")
-    UserDTO getUserByUserName(@PathVariable("name") String userName){
+    @GetMapping("/getByUserName")
+    UserDTO getUserByUserName(@RequestParam("name") String userName){
         return mapper.map(userService.getUserByUserName(userName),UserDTO.class);
 
     }

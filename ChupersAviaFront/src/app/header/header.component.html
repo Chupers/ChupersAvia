@@ -4,9 +4,15 @@
     </mat-card-title>
     <mat-card-subtitle class="header-menu">
         <mat-menu  #menu="matMenu">
+            <div *ngIf='!user'>
             <button  mat-menu-item (click)="openLoginDialog()" >Log&nbsp;In </button>
             <button  mat-menu-item (click)="openRegistrationDialog()">Sign&nbsp;Up </button>
+            </div>
+            <div *ngIf ='user'>
+                {{user.userName}}
+            </div>
         </mat-menu>
+        
         <div class="header-menu-item">
             <button mat-fab color="accent" [matMenuTriggerFor]="menu" aria-label="Example icon button with a delete icon">
             <mat-icon>menu</mat-icon>
