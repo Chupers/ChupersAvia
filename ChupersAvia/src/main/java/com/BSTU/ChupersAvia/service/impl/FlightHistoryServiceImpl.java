@@ -31,4 +31,9 @@ public class FlightHistoryServiceImpl implements FlightHistoryService {
     public FlightHistory getFlightHistoryById(Long id) {
         return flightHistoryRepository.findByFlightHistoryId(id);
     }
+
+
+    public FlightHistory getFlightHistoryByUserId(Long userId) {
+        return flightHistoryRepository.findByUsers_UserId(userId);
+    }
 }

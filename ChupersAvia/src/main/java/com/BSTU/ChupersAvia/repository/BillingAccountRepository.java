@@ -10,4 +10,5 @@ import java.util.List;
 public interface BillingAccountRepository extends CrudRepository<BillingAccount,Long> {
     List<BillingAccount> findAllBy();
     BillingAccount findBillingAccountByBillingAccountId(Long id);
+    BillingAccount findByUsers_UserId(Long userId);
 }

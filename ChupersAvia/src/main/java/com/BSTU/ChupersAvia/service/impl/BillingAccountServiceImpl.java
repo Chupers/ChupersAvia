@@ -32,4 +32,9 @@ public class BillingAccountServiceImpl implements BillingAccountService {
     public BillingAccount getBillingAccountById(Long id) {
        return billingAccountRepository.findBillingAccountByBillingAccountId(id);
     }
+
+    @Override
+    public BillingAccount getBillingAccountByUserId(Long userId) {
+        return billingAccountRepository.findByUsers_UserId(userId);
+    }
 }

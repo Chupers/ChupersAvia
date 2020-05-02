@@ -23,19 +23,6 @@ public class MappingConfig {
             protected void configure() {
                 mapping(FlightHistory.class, FlightHistoryDTO.class)
                         .fields("users.userId","users");
-                mapping(OrderItem.class,OrderItemDTO.class)
-                        .fields("airportTo.airportName","airportTo")
-                        .fields("airportFrom.airportName","airportFrom")
-                        .fields("plane.planeId","plane");
-                mapping(Airport.class,AirportDTO.class)
-                        .fields("company.companyId","company");
-                mapping(Plane.class,PlaneDTO.class)
-                        .fields("company.companyId","company");
-                mapping(SalesOrder.class,SalesOrderDTO.class)
-                        .fields("costumers.costumerId","costumers")
-                        .fields("users.userId","users")
-                        .fields("billingAccount.billingAccountId","billingAccount")
-                        .fields("flightHistory.flightHistoryId","flightHistory");
             }
         };
     }

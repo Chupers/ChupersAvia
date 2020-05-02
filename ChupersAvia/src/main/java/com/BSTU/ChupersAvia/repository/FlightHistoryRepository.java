@@ -10,4 +10,5 @@ import java.util.List;
 public interface FlightHistoryRepository extends CrudRepository<FlightHistory,Long> {
     List<FlightHistory> findAllBy();
     FlightHistory findByFlightHistoryId(Long id);
+    FlightHistory findByUsers_UserId(Long userId);
 }

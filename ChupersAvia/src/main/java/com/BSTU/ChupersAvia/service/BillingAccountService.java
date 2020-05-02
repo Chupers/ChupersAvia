@@ -8,4 +8,5 @@ public interface BillingAccountService {
     BillingAccount save(BillingAccount billingAccount);
     List<BillingAccount> getAllBillingAccount();
     BillingAccount getBillingAccountById(Long id);
+    BillingAccount getBillingAccountByUserId(Long userId);
 }

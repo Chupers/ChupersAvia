@@ -13,7 +13,7 @@ public class Costumer {
     private String fistName;
     @NotNull
     private String secondName;
-    @NotNull
+    
     private PassengerType passengerType;
     @OneToMany(mappedBy = "costumers",orphanRemoval = true)
     private List<SalesOrder> salesOrders;

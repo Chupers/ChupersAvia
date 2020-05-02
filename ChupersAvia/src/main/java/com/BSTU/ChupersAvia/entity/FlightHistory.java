@@ -15,6 +15,9 @@ public class FlightHistory {
 
     public FlightHistory(){}
 
+    public void addSalesOrder(SalesOrder salesOrder){
+        this.salesOrder.add(salesOrder);
+    }
     public Long getFlightHistoryId() {
         return flightHistoryId;
     }
