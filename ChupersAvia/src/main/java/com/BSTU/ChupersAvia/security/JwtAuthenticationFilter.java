@@ -92,15 +92,11 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME))
                 .sign(HMAC512(JwtProperties.SECRET.getBytes()));
 
-        try {
-            TwoFish twoFish = new TwoFish();
-            String encodeToken = twoFish.encode(token);
-            //response.addHeader("encryp",encodeToken);
-            String decodeToken = twoFish.decode();
-            response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + token);
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        }
+//        TwoFish twoFish = new TwoFish();
+//        String encodeToken = twoFish.encode(token);
+//        //response.addHeader("encryp",encodeToken);
+//        String decodeToken = twoFish.decode();
+        response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + token);
 
     }
 }

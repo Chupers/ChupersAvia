@@ -1,5 +1,6 @@
 package com.BSTU.ChupersAvia.controller;
 
+import com.BSTU.ChupersAvia.algorithm.TwoFish;
 import com.BSTU.ChupersAvia.entity.BillingAccount;
 import com.BSTU.ChupersAvia.entity.UserRole;
 import com.BSTU.ChupersAvia.entity.dataTransferObjects.UserDTO;
@@ -57,8 +58,8 @@ public class UserController {
         users.setBillingAccount(billingAccount);
         userRole.AddUser(users);
         users.setUserRole(userRole);
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        users.setHashPassword(bCryptPasswordEncoder.encode(users.getHashPassword()));
+        TwoFish twoFish = new TwoFish();
+        users.setHashPassword(twoFish.encode(users.getHashPassword()));
         userService.save(users);
     }
 }

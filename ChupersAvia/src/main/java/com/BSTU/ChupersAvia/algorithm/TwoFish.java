@@ -1,16 +1,21 @@
 package com.BSTU.ChupersAvia.algorithm;
 
 import com.BSTU.ChupersAvia.security.JwtProperties;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.security.InvalidKeyException;
 import java.util.ArrayList;
 import java.util.Base64;
 
-public class TwoFish {
+public class TwoFish implements PasswordEncoder {
     ArrayList<byte[]> ciphers;
     Object sessionKey;
-    public TwoFish() throws InvalidKeyException {
-         this.sessionKey = Twofish_Algorithm.makeKey(JwtProperties.SECRETTWOFISH.getBytes());
+    public TwoFish() {
+        try {
+            this.sessionKey = Twofish_Algorithm.makeKey(JwtProperties.SECRETTWOFISH.getBytes());
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+        }
     }
     public String decode(){
         System.out.println("\n\nDecrypted Cipher Text : ");
@@ -26,8 +31,11 @@ public class TwoFish {
         }
         return stringBuilder.toString();
     }
-    public String encode(String text){
-        byte[] p = text.getBytes();
+
+
+    @Override
+    public String encode(CharSequence charSequence) {
+        byte[] p = charSequence.toString().getBytes();
         ArrayList<Byte> inputText = new ArrayList();
 
         // If input text is less than 128 bits
@@ -71,7 +79,7 @@ public class TwoFish {
                 p[i] = inputText.get(i);
             }
         }
-         this.ciphers = new ArrayList();
+        this.ciphers = new ArrayList();
 
         byte[] cipher;
         System.out.println("\n\nCipher Text : ");
@@ -86,6 +94,15 @@ public class TwoFish {
             stringBuilder.append(encoded);
         }
         return stringBuilder.toString();
+    }
 
+    @Override
+    public boolean matches(CharSequence charSequence, String s) {
+        return s.equals(encode(charSequence)) ;
+    }
+
+    @Override
+    public boolean upgradeEncoding(String encodedPassword) {
+        return false;
     }
 }

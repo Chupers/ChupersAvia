@@ -1,5 +1,6 @@
 package com.BSTU.ChupersAvia.security;
 
+import com.BSTU.ChupersAvia.algorithm.TwoFish;
 import com.BSTU.ChupersAvia.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -62,6 +63,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new TwoFish();
     }
 }
